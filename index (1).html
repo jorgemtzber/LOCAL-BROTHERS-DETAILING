@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Brothers Auto Detailing</title>
+  <meta
+    name="description"
+    content="Premium mobile auto detailing in The Woodlands, TX. Professional results brought directly to your doorstep."
+  />
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0f0f10;
+      --card: #121214;
+      --line: rgba(255, 255, 255, 0.12);
+      --line-2: rgba(255, 255, 255, 0.08);
+      --text: #ffffff;
+      --muted: rgba(255, 255, 255, 0.68);
+      --muted-2: rgba(255, 255, 255, 0.42);
+      --white: #ffffff;
+      --black: #000000;
+      --radius: 24px;
+      --radius-sm: 16px;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 96px 0;
+    }
+
+    .section.light {
+      background: #ffffff;
+      color: #000000;
+    }
+
+    .section.dark {
+      background: var(--bg);
+      color: var(--white);
+    }
+
+    .section-label {
+      display: inline-block;
+      margin-bottom: 18px;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      opacity: 0.45;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 0.96;
+      letter-spacing: -0.04em;
+    }
+
+    .section-copy {
+      margin: 16px 0 0;
+      max-width: 680px;
+      font-size: 18px;
+      line-height: 1.7;
+      opacity: 0.7;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 26px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .btn.primary {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .btn.primary:hover {
+      transform: translateY(-1px);
+      background: #f2f2f2;
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--white);
+      border-color: rgba(255, 255, 255, 0.22);
+    }
+
+    .btn.secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(10px);
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(0, 0, 0, 0.86);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--line-2);
+    }
+
+    .header-inner {
+      height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--white);
+      color: var(--black);
+      display: grid;
+      place-items: center;
+      flex: none;
+    }
+
+    .brand-copy {
+      line-height: 1;
+    }
+
+    .brand-top {
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .brand-bottom {
+      margin-top: 4px;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .nav a {
+      font-size: 14px;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.74);
+    }
+
+    .nav a:hover {
+      color: var(--white);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .mobile-panel {
+      display: none;
+      padding: 0 0 18px;
+    }
+
+    .mobile-panel a {
+      display: block;
+      padding: 12px 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-weight: 600;
+    }
+
+    .mobile-panel.open {
+      display: block;
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 96px 0 88px;
+      background:
+        linear-gradient(120deg, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0.45)),
+        url("https://images.unsplash.com/photo-1606577924006-27d39b132ae2?w=1600&q=80")
+        center/cover no-repeat;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: end;
+    }
+
+    .hero h1 {
+      margin: 18px 0 0;
+      font-size: clamp(52px, 9vw, 104px);
+      line-height: 0.92;
+      letter-spacing: -0.05em;
+      text-transform: uppercase;
+      font-weight: 900;
+      max-width: 9ch;
+    }
+
+    .rotator {
+      display: block;
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+
+    .hero p {
+      margin: 22px 0 0;
+      max-width: 620px;
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .stat {
+      padding: 18px 16px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 28px;
+      font-weight: 900;
+    }
+
+    .stat span {
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.56);
+    }
+
+    .hero-card {
+      width: min(100%, 420px);
+      justify-self: end;
+      padding: 24px;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .hero-card img {
+      border-radius: 20px;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 42px;
+    }
+
+    .service-card {
+      position: relative;
+      padding: 28px;
+      border-radius: 24px;
+      background: rgba(0, 0, 0, 0.05);
+      transition: 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .service-card.popular {
+      background: #050505;
+      color: var(--white);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.22);
+    }
+
+    .service-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: var(--white);
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .service-card h3 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+    }
+
+    .service-price {
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.56;
+    }
+
+    .service-card p {
+      margin: 14px 0 18px;
+      font-size: 15px;
+      line-height: 1.65;
+      opacity: 0.78;
+    }
+
+    .service-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .service-list li {
+      position: relative;
+      padding-left: 16px;
+      font-size: 14px;
+      opacity: 0.78;
+    }
+
+    .service-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: currentColor;
+      opacity: 0.9;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-visual img {
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .float-badge {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      background: var(--white);
+      color: var(--black);
+      border-radius: 22px;
+      padding: 18px 20px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
+    }
+
+    .float-badge strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 900;
+    }
+
+    .float-badge span {
+      display: block;
+      margin-top: 6px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.5);
+    }
+
+    .perks {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 28px 0;
+    }
+
+    .perk {
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 54px;
+      padding-top: 38px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .about-stat {
+      text-align: center;
+    }
+
+    .about-stat strong {
+      display: block;
+      font-size: 34px;
+      font-weight: 900;
+    }
+
+    .about-stat span {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.42);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+
+    .gallery-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.55s ease;
+    }
+
+    .gallery-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .gallery-card span {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.58);
+      color: var(--white);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .testimonial-wrap {
+      margin-top: 76px;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 32px;
+    }
+
+    .testimonial {
+      padding: 28px;
+      border-radius: 24px;
+      background: #050505;
+      color: var(--white);
+    }
+
+    .stars {
+      font-size: 15px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial p {
+      margin: 18px 0 20px;
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .testimonial strong {
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+    }
+
+    .contact-stack {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+    }
+
+    .contact-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+      display: grid;
+      place-items: center;
+      flex: none;
+    }
+
+    .contact-item label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.32);
+    }
+
+    .contact-link,
+    .contact-text {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .hours {
+      margin-top: 8px;
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hours h4 {
+      margin: 0 0 14px;
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .hours-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .hours-row:last-child {
+      border-bottom: 0;
+    }
+
+    .hours-row span:first-child {
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .form-card {
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .form-card h3 {
+      margin: 0 0 18px;
+      font-size: 26px;
+      letter-spacing: -0.03em;
+    }
+
+    .helper {
+      margin-top: -4px;
+      margin-bottom: 18px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .field label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: #090909;
+      color: var(--white);
+      font: inherit;
+    }
+
+    .field textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .footer {
+      padding: 20px 0 28px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      background: #000000;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.36);
+    }
+
+    .social-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .social-row a {
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: block;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        justify-self: start;
+        width: 100%;
+        max-width: 500px;
+      }
+
+      .services-grid,
+      .gallery-grid,
+      .testimonials {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(var(--max), calc(100% - 24px));
+      }
+
+      .section {
+        padding: 74px 0;
+      }
+
+      .hero {
+        padding: 88px 0 74px;
+      }
+
+      .services-grid,
+      .gallery-grid,
+      .testimonials,
+      .form-grid,
+      .perks,
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hours-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#home">
+        <div class="brand-mark" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+            <path d="M3 17l2-7h14l2 7H3z" fill="#000"></path>
+            <circle cx="7.5" cy="17.5" r="1.5" fill="#000"></circle>
+            <circle cx="16.5" cy="17.5" r="1.5" fill="#000"></circle>
+          </svg>
+        </div>
+        <div class="brand-copy">
+          <div class="brand-top">LB</div>
+          <div class="brand-bottom">Auto Detailing</div>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a class="btn primary" href="#contact">Book Now</a>
+      </nav>
+
+      <button class="mobile-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+    </div>
+
+    <div class="container mobile-panel" id="mobilePanel">
+      <a href="#home">Home</a>
+      <a href="#services">Services</a>
+      <a href="#about">About</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Contact</a>
+      <a class="btn primary" href="#contact" style="margin-top: 8px;">Book Now</a>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="container hero-grid">
+      <div>
+        <span class="pill">Professional Auto Detailing</span>
+
+        <h1>
+          Local Brothers<br />
+          Auto<br />
+          <span class="rotator" id="rotator">Detailing</span>
+        </h1>
+
+        <p>
+          Premium mobile detailing services in The Woodlands, TX. We bring showroom-quality
+          results directly to your driveway — every time.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn primary" href="#contact">Book a Detail</a>
+          <a class="btn secondary" href="#services">View Services</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>500+</strong>
+            <span>Cars Detailed</span>
+          </div>
+          <div class="stat">
+            <strong>5★</strong>
+            <span>Average Rating</span>
+          </div>
+          <div class="stat">
+            <strong>3+</strong>
+            <span>Years Experience</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <h3>Mobile Luxury Care</h3>
+        <img
+          src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=900&q=80"
+          alt="Wheel and tire detail"
+        />
+      </aside>
+    </div>
+  </section>
+
+  <section class="section light" id="services">
+    <div class="container">
+      <span class="section-label">What We Offer</span>
+      <h2>Our Services</h2>
+      <p class="section-copy">
+        From a quick refresh to a full transformation — we have every detail covered.
+      </p>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <h3>Exterior Detail</h3>
+          <div class="service-price">From $149</div>
+          <p>
+            Full wash, clay bar, polish, and premium wax protection for a showroom-grade finish.
+          </p>
+          <ul class="service-list">
+            <li>Hand wash & dry</li>
+            <li>Clay bar treatment</li>
+            <li>Polish & wax</li>
+            <li>Tire & rim shine</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3>Interior Detail</h3>
+          <div class="service-price">From $199</div>
+          <p>
+            Deep vacuum, steam clean, leather conditioning, and odor elimination for a fresh interior.
+          </p>
+          <ul class="service-list">
+            <li>Deep vacuum</li>
+            <li>Steam cleaning</li>
+            <li>Leather condition</li>
+            <li>Odor elimination</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3>Paint Correction</h3>
+          <div class="service-price">From $349</div>
+          <p>
+            Multi-stage machine polishing to remove swirl marks, scratches, and oxidation.
+          </p>
+          <ul class="service-list">
+            <li>Swirl removal</li>
+            <li>Scratch correction</li>
+            <li>Oxidation removal</li>
+            <li>Paint sealing</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3>Ceramic Coating</h3>
+          <div class="service-price">From $799</div>
+          <p>
+            Nano-ceramic protection that bonds to your paint for years of hydrophobic defense.
+          </p>
+          <ul class="service-list">
+            <li>9H hardness</li>
+            <li>3–5 year protection</li>
+            <li>Hydrophobic coat</li>
+            <li>UV resistance</li>
+          </ul>
+        </article>
+
+        <article class="service-card popular">
+          <span class="service-badge">Popular</span>
+          <h3>Full Detail</h3>
+          <div class="service-price">From $299</div>
+          <p>
+            Complete interior and exterior package — the ultimate refresh for your vehicle.
+          </p>
+          <ul class="service-list">
+            <li>Interior + Exterior</li>
+            <li>Engine bay clean</li>
+            <li>Glass treatment</li>
+            <li>Air freshener</li>
+          </ul>
+        </article>
+
+        <article class="service-card">
+          <h3>PPF Install</h3>
+          <div class="service-price">From $499</div>
+          <p>
+            Paint Protection Film shields your car's most vulnerable surfaces from chips and scratches.
+          </p>
+          <ul class="service-list">
+            <li>Self-healing film</li>
+            <li>Clear bra option</li>
+            <li>Custom cut</li>
+            <li>Warranty included</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <img
+            src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?w=900&q=80"
+            alt="Car detailing close-up"
+          />
+          <div class="float-badge">
+            <strong>500+</strong>
+            <span>Happy Customers</span>
+          </div>
+        </div>
+
+        <div>
+          <span class="section-label">About Us</span>
+          <h2>We Treat Every Car Like Our Own</h2>
+
+          <p class="section-copy">
+            Local Brothers Auto Detailing was founded on one simple belief: your car deserves
+            the best care possible. We bring years of detailing expertise right to your driveway
+            in The Woodlands, TX — no drop-offs, no waiting rooms.
+          </p>
+
+          <p class="section-copy" style="margin-top: 18px;">
+            From daily drivers to luxury vehicles, we use premium products and proven techniques
+            to deliver results you can be proud of. Our mobile unit comes fully equipped — all we
+            need is your vehicle.
+          </p>
+
+          <div class="perks">
+            <div class="perk">Mobile & Fully Equipped</div>
+            <div class="perk">Premium Products Only</div>
+            <div class="perk">Satisfaction Guarantee</div>
+            <div class="perk">Flexible Scheduling</div>
+          </div>
+
+          <a class="btn primary" href="#contact">Get Started</a>
+        </div>
+      </div>
+
+      <div class="about-stats">
+        <div class="about-stat">
+          <strong>500+</strong>
+          <span>Cars Detailed</span>
+        </div>
+        <div class="about-stat">
+          <strong>98%</strong>
+          <span>Satisfaction Rate</span>
+        </div>
+        <div class="about-stat">
+          <strong>3+</strong>
+          <span>Years in Business</span>
+        </div>
+        <div class="about-stat">
+          <strong>50+</strong>
+          <span>5-Star Reviews</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light" id="gallery">
+    <div class="container">
+      <span class="section-label">Our Work</span>
+      <h2>Results That Speak</h2>
+      <p class="section-copy">
+        Every detail matters. Take a look at some of our recent detailing work in The Woodlands, TX.
+      </p>
+
+      <div class="gallery-grid">
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=700&q=80" alt="Black car exterior detail" />
+          <span>Exterior Detail</span>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=700&q=80" alt="Interior leather seats" />
+          <span>Interior Clean</span>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=700&q=80" alt="Red sports car" />
+          <span>Paint Correction</span>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&q=80" alt="White luxury car" />
+          <span>Ceramic Coating</span>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=700&q=80" alt="Blue car close-up" />
+          <span>Full Detail</span>
+        </div>
+        <div class="gallery-card">
+          <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=700&q=80" alt="Car wheel detail" />
+          <span>Rim & Tire</span>
+        </div>
+      </div>
+
+      <div class="testimonial-wrap">
+        <span class="section-label">Testimonials</span>
+        <h2 style="font-size: clamp(30px, 4vw, 46px);">What Customers Say</h2>
+
+        <div class="testimonials">
+          <article class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“Absolutely incredible work. My car looks better than it did off the lot. Will definitely be a returning customer!”</p>
+            <strong>Marcus T.</strong>
+          </article>
+
+          <article class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“These guys came to my house and did a full detail in 3 hours. The interior was spotless. Highly recommend!”</p>
+            <strong>Sarah K.</strong>
+          </article>
+
+          <article class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“Best detail I've ever had. They got out a coffee stain I thought was permanent. 10/10 service.”</p>
+            <strong>Jason R.</strong>
+          </article>
+
+          <article class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“The ceramic coating they applied is amazing — water just beads right off. Worth every penny.”</p>
+            <strong>Lisa M.</strong>
+          </article>
+
+          <article class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“Professional, on time, and the results speak for themselves. My truck looks brand new again!”</p>
+            <strong>David P.</strong>
+          </article>
+
+          <article class="testimonial">
+            <div class="stars">★★★★★</div>
+            <p>“Booked a full detail for my SUV. The team was thorough, friendly, and incredibly detailed. Will book again!”</p>
+            <strong>Amy C.</strong>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" id="contact">
+    <div class="container contact-grid">
+      <div>
+        <span class="section-label">Contact Us</span>
+        <h2>Book Your Detail Today</h2>
+        <p class="section-copy">
+          Ready for a showroom-quality finish? Fill out the form and your email app will open
+          with your request ready to send to Local Brothers Auto Detailing.
+        </p>
+
+        <div class="contact-stack">
+          <div class="contact-item">
+            <div class="contact-icon">☎</div>
+            <div>
+              <label>Phone</label>
+              <a class="contact-link" href="tel:+14692078693">(469) 207-8693</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">✉</div>
+            <div>
+              <label>Email</label>
+              <a class="contact-link" href="mailto:bros-detailing@mail.com">bros-detailing@mail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">⌖</div>
+            <div>
+              <label>Service Area</label>
+              <div class="contact-text">The Woodlands, TX.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hours">
+          <h4>Hours of Operation</h4>
+          <div class="hours-row">
+            <span>Monday – Friday</span>
+            <span>8:00 AM – 6:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span>Saturday</span>
+            <span>9:00 AM – 5:00 PM</span>
+          </div>
+          <div class="hours-row">
+            <span>Sunday</span>
+            <span>By Appointment</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card">
+        <h3>Request a Quote</h3>
+        <p class="helper">Fill this out and your email app will prepare the message for you.</p>
+
+        <form id="quoteForm">
+          <div class="form-grid">
+            <div class="field">
+              <label for="name">Name *</label>
+              <input id="name" name="name" required placeholder="John Doe" />
+            </div>
+            <div class="field">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" required placeholder="john@email.com" />
+            </div>
+          </div>
+
+          <div class="form-grid">
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" placeholder="(469) 207-8693" />
+            </div>
+            <div class="field">
+              <label for="service">Service *</label>
+              <select id="service" name="service" required>
+                <option value="">Select a service</option>
+                <option>Exterior Detail</option>
+                <option>Interior Detail</option>
+                <option>Full Detail</option>
+                <option>Paint Correction</option>
+                <option>Ceramic Coating</option>
+                <option>PPF Install</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us about your vehicle and any special requests..."></textarea>
+          </div>
+
+          <button class="btn primary" type="submit" style="width: 100%;">Send Request</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>© <span id="year"></span> Local Brothers Auto Detailing. All rights reserved.</div>
+      <div class="social-row">
+        <a href="https://linktr.ee/local.bros.auto.detail" target="_blank" rel="noopener noreferrer" aria-label="Linktree">↗</a>
+        <a href="mailto:bros-detailing@mail.com" aria-label="Email">✉</a>
+        <a href="tel:+14692078693" aria-label="Phone">☎</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const words = ["DETAILING", "PROTECTION", "PERFECTION", "EXCELLENCE"];
+    const rotator = document.getElementById("rotator");
+    let wordIndex = 0;
+
+    setInterval(() => {
+      wordIndex = (wordIndex + 1) % words.length;
+      rotator.style.opacity = "0";
+      rotator.style.transform = "translateY(8px)";
+
+      setTimeout(() => {
+        rotator.textContent = words[wordIndex];
+        rotator.style.opacity = "1";
+        rotator.style.transform = "translateY(0)";
+      }, 180);
+    }, 2200);
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const menuToggle = document.getElementById("menuToggle");
+    const mobilePanel = document.getElementById("mobilePanel");
+
+    menuToggle.addEventListener("click", () => {
+      mobilePanel.classList.toggle("open");
+      menuToggle.textContent = mobilePanel.classList.contains("open") ? "✕" : "☰";
+    });
+
+    mobilePanel.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobilePanel.classList.remove("open");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    document.getElementById("quoteForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const service = document.getElementById("service").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      if (!name || !email || !service) {
+        alert("Please complete Name, Email, and Service.");
+        return;
+      }
+
+      const subject = encodeURIComponent("Quote Request - " + service);
+      const body = encodeURIComponent(
+        "Name: " + name + "\n" +
+        "Email: " + email + "\n" +
+        "Phone: " + phone + "\n" +
+        "Service: " + service + "\n\n" +
+        "Message:\n" + message
+      );
+
+      window.location.href =
+        "mailto:bros-detailing@mail.com?subject=" + subject + "&body=" + body;
+    });
+  </script>
+</body>
+</html>
